@@ -1,0 +1,226 @@
+/* Contact.css */
+
+/* Reset some basics */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #e0f2fe; /* light blue background */
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container styling */
+.motion-div {
+  max-width: 450px;
+  width: 100%;
+  background: linear-gradient(135deg, #ffffff, #dbeafe);
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+  padding: 2rem 2.5rem;
+  margin: 3rem auto;
+  transition: background 0.3s ease;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #1e293b;
+  }
+  .motion-div {
+    background: linear-gradient(135deg, #334155, #1e293b);
+    box-shadow: 0 8px 24px rgba(96, 165, 250, 0.6);
+  }
+}
+
+/* Heading */
+h2 {
+  font-weight: 700;
+  font-size: 2.25rem;
+  color: #2563eb; /* blue-700 */
+  margin-bottom: 1.5rem;
+  text-align: center;
+  user-select: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  h2 {
+    color: #93c5fd; /* blue-300 */
+  }
+}
+
+/* Form styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Input wrapper for floating label */
+.input-group {
+  position: relative;
+  width: 100%;
+}
+
+label {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  color: #64748b; /* gray-500 */
+  font-weight: 500;
+  font-size: 0.875rem;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 1.25rem 1rem 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid #f87171; /* red-400 default */
+  font-size: 1rem;
+  font-weight: 500;
+  color: #0f172a; /* gray-900 */
+  outline: none;
+  background-color: #fef3c7; /* amber-100 */
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  resize: vertical;
+  min-height: 3rem;
+}
+
+/* Dark mode input background */
+@media (prefers-color-scheme: dark) {
+  input,
+  textarea {
+    background-color: #475569; /* slate-600 */
+    color: #f1f5f9; /* slate-100 */
+  }
+}
+
+/* Border green if valid */
+input:not(:placeholder-shown):not(:focus),
+textarea:not(:placeholder-shown):not(:focus) {
+  border-color: #34d399; /* green-400 */
+  background-color: #d1fae5; /* green-100 */
+}
+
+/* Border blue on focus */
+input:focus,
+textarea:focus {
+  border-color: #3b82f6; /* blue-500 */
+  background-color: #dbeafe; /* blue-100 */
+  box-shadow: 0 0 8px #3b82f6aa;
+}
+
+/* Move label up on focus or filled input */
+input:focus + label,
+input:not(:placeholder-shown) + label,
+textarea:focus + label,
+textarea:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 10px;
+  background-color: #fef3c7;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #2563eb;
+  padding: 0 6px;
+  border-radius: 3px;
+  user-select: none;
+}
+
+/* Dark mode label background */
+@media (prefers-color-scheme: dark) {
+  input:focus + label,
+  input:not(:placeholder-shown) + label,
+  textarea:focus + label,
+  textarea:not(:placeholder-shown) + label {
+    background-color: #475569;
+    color: #93c5fd;
+  }
+}
+
+/* Character count text */
+.char-count {
+  font-size: 0.8rem;
+  color: #475569; /* slate-600 */
+  text-align: right;
+  user-select: none;
+  font-weight: 500;
+}
+
+@media (prefers-color-scheme: dark) {
+  .char-count {
+    color: #cbd5e1; /* slate-300 */
+  }
+}
+
+/* Error message */
+.error-msg {
+  color: #dc2626; /* red-600 */
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+  user-select: none;
+}
+
+/* Success message */
+.success-msg {
+  color: #16a34a; /* green-600 */
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 1rem;
+  user-select: none;
+}
+
+/* Submit button */
+button[type='submit'] {
+  width: 100%;
+  background-color: #2563eb; /* blue-700 */
+  color: white;
+  font-weight: 700;
+  padding: 0.75rem 0;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+  user-select: none;
+  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+}
+
+button[type='submit']:hover {
+  background-color: #1d4ed8; /* blue-800 */
+  box-shadow: 0 7px 22px rgba(29, 78, 216, 0.6);
+  transform: translateY(-2px);
+}
+
+button[type='submit']:active {
+  transform: scale(0.95);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.5);
+}
+
+/* Smooth transition for all form elements */
+input,
+textarea,
+button,
+label {
+  transition: all 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .motion-div {
+    padding: 1.5rem 1.25rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+}

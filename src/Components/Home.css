@@ -1,0 +1,81 @@
+/* Container and background */
+.home-main {
+  min-height: 100vh;
+  padding: 1.5rem; /* 24px */
+  background: linear-gradient(135deg, #ebf8ff, #dbeafe); /* light blue gradient */
+  color: #1e293b; /* dark slate */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 768px;
+  width: 100%;
+}
+
+/* Title */
+.home-title {
+  font-size: 2.5rem; /* 40px */
+  font-weight: 700;
+  color: #1e40af; /* blue-900 */
+  margin-bottom: 1.5rem; /* 24px */
+}
+
+@media (min-width: 768px) {
+  .home-title {
+    font-size: 3rem; /* 48px on medium+ screens */
+  }
+}
+
+/* Paragraph */
+.home-description {
+  font-size: 1.125rem; /* 18px */
+  color: #475569; /* gray-700 */
+  margin-bottom: 2rem; /* 32px */
+}
+
+@media (min-width: 768px) {
+  .home-description {
+    font-size: 1.25rem; /* 20px on medium+ screens */
+  }
+}
+
+/* Image */
+.home-image {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 1rem; /* rounded-2xl */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  margin: 0 auto 2rem auto;
+  display: block;
+}
+
+/* Button */
+.home-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem; /* 12px 24px */
+  background-color: #1e40af; /* blue-700 */
+  color: white;
+  font-size: 1.125rem; /* 18px */
+  border-radius: 9999px; /* full rounded */
+  box-shadow: 0 4px 8px rgba(30, 64, 175, 0.4);
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+.home-button:hover,
+.home-button:focus {
+  background-color: #1e3a8a; /* blue-800 */
+  box-shadow: 0 6px 12px rgba(30, 58, 138, 0.6);
+}
+
+.home-button:focus {
+  outline: 4px solid #93c5fd; /* blue-300 ring */
+  outline-offset: 2px;
+}
