@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-
 function Home() {
   const [text, setText] = useState("");
   const [translatedText, setTranslatedText] = useState("");
@@ -345,7 +344,6 @@ function Home() {
           </p>
         </section>
       </main>
-
       <footer
         className={`p-4 text-center ${panelBg} ${panelText}`}
       >
