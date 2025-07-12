@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 
 function Services() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Auto detect system preference on first load
     if (window.matchMedia) {
       return window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
@@ -12,7 +11,6 @@ function Services() {
   const [isKeyboardUser, setIsKeyboardUser] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [favorites, setFavorites] = useState(() => {
-    // Load favorites from localStorage if available
     try {
       const favs = localStorage.getItem('serviceFavorites');
       return favs ? JSON.parse(favs) : [];
@@ -24,12 +22,10 @@ function Services() {
   const [speechRate, setSpeechRate] = useState(1);
   const cardRefs = useRef([]);
 
-  // Save favorites to localStorage on change
   useEffect(() => {
     localStorage.setItem('serviceFavorites', JSON.stringify(favorites));
   }, [favorites]);
 
-  // Accessibility: detect keyboard usage for focus outline
   useEffect(() => {
     function handleFirstTab(e) {
       if (e.key === 'Tab') {
@@ -62,14 +58,12 @@ function Services() {
     },
   ];
 
-  // Filter services by search term
   const filteredServices = services.filter(
     (s) =>
       s.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       s.desc.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Text to Speech with adjustable rate
   const speakText = (text) => {
     if ('speechSynthesis' in window) {
       const utterance = new SpeechSynthesisUtterance(text);
@@ -82,7 +76,6 @@ function Services() {
     }
   };
 
-  // Clipboard copy function
   const copyToClipboard = (text) => {
     navigator.clipboard
       .writeText(text)
@@ -90,14 +83,12 @@ function Services() {
       .catch(() => alert('Failed to copy text.'));
   };
 
-  // Toggle favorite
   const toggleFavorite = (id) => {
     setFavorites((prev) =>
       prev.includes(id) ? prev.filter((favId) => favId !== id) : [...prev, id]
     );
   };
 
-  // Highlight matching text helper
   const highlightMatch = (text) => {
     if (!searchTerm) return text;
     const regex = new RegExp(`(${searchTerm})`, 'gi');
@@ -113,7 +104,6 @@ function Services() {
     );
   };
 
-  // Theme styles
   const themeStyles = {
     backgroundColor: isDarkMode ? '#1A2331' : '#f0f4f8',
     color: isDarkMode ? '#E0E7FF' : '#1A2331',
@@ -122,7 +112,6 @@ function Services() {
   const cardTextColor = isDarkMode ? '#E0E7FF' : '#1A2331';
   const headingColor = isDarkMode ? '#60a5fa' : '#1E40AF';
 
-  // Keyboard navigation trap on cards (basic example)
   const handleKeyDown = (e, index) => {
     if (e.key === 'ArrowRight') {
       e.preventDefault();
@@ -153,7 +142,6 @@ function Services() {
         position: 'relative',
       }}
     >
-      {/* Dark/Light Mode Toggle */}
       <button
         onClick={() => setIsDarkMode(!isDarkMode)}
         aria-pressed={!isDarkMode}
@@ -174,7 +162,6 @@ function Services() {
         {isDarkMode ? 'Light Mode' : 'Dark Mode'}
       </button>
 
-      {/* Font Size Control */}
       <label
         htmlFor="font-size"
         style={{
@@ -198,7 +185,6 @@ function Services() {
         />
       </label>
 
-      {/* Speech Rate Control */}
       <label
         htmlFor="speech-rate"
         style={{
@@ -223,13 +209,11 @@ function Services() {
         />
       </label>
 
-      {/* Heading */}
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
         style={{
-          fontSize: '3rem',
           fontWeight: '700',
           marginBottom: '1rem',
           color: headingColor,
@@ -242,7 +226,6 @@ function Services() {
         Our Services
       </motion.h1>
 
-      {/* Search box */}
       <input
         type="search"
         aria-label="Search services"
@@ -263,7 +246,6 @@ function Services() {
         }}
       />
 
-      {/* Description */}
       <p
         tabIndex={0}
         style={{
@@ -278,7 +260,6 @@ function Services() {
         We provide accessible and inclusive digital solutions tailored for everyone, including people with disabilities.
       </p>
 
-      {/* Service Cards */}
       <div
         role="list"
         aria-label="List of services"
@@ -356,7 +337,6 @@ function Services() {
                 {highlightMatch(service.desc)}
               </p>
 
-              {/* Favorite toggle */}
               <button
                 onClick={(e) => {
                   e.stopPropagation();
@@ -378,7 +358,6 @@ function Services() {
                 {isFav ? '★' : '☆'}
               </button>
 
-              {/* Copy to clipboard button */}
               <button
                 onClick={(e) => {
                   e.stopPropagation();
